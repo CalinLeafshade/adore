@@ -100,4 +100,4 @@ function animation:draw(x,y,sx,sy)
 	love.graphics.draw(self.texture, self.quads[frameIndex], x, y,0,sx * (self.flipped and -1 or 1),sy,math.floor(self.frameWidth / 2), self.frameHeight)
 end
 
-adore.animation = animation
+return animation

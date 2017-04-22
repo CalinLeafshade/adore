@@ -81,4 +81,4 @@ function camera.fadeIn(speed)
 	screenFadeOverlay:fadeIn(speed or 1)
 end
 
-adore.camera = camera
+return camera

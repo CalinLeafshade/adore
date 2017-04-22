@@ -43,4 +43,4 @@ function mask:debugDraw()
 	end
 end
 
-adore.mask = mask
+return mask

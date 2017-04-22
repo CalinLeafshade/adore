@@ -392,4 +392,4 @@ function scenes.load()
 	end
 end
 
-adore.scenes = scenes
+return scenes

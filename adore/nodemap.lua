@@ -218,4 +218,4 @@ function nodemap:path(fromX, fromY, toX, toY, excludedMasks)
 	return false
 end
 
-adore.nodemap = nodemap
+return nodemap

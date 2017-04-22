@@ -115,4 +115,4 @@ function inventories.new(owner)
   return inventory(owner)
 end
 
-adore.inventories = inventories
+return inventories

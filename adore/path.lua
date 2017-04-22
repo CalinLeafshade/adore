@@ -125,4 +125,4 @@ function path:draw()
 	end
 end
 
-adore.path = path
+return path

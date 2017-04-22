@@ -9,4 +9,4 @@ function sound.playMusic(name)
 	music:play()
 end
 
-adore.sound = sound
+return sound

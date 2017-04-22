@@ -21,4 +21,4 @@ p = {
 	end
 }
 
-adore.palette = p
+return p

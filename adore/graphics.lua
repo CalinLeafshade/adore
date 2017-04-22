@@ -13,25 +13,25 @@ end
 function colour:unpack()
 	return {self.r, self.g, self.b, self.a}
 end
-	
+
 local graphics = {}
 
 local fonts = {}
 
-local function loadFonts( directory ) 
-	
+local function loadFonts( directory )
+
 	local fileList = love.filesystem.getDirectoryItems(directory)
-	
+
 	for i,fileName in ipairs(fileList) do
 		local fontName = string.sub(fileName, string.find(fileName, "[^.]*"))
-		
+
 		if fonts[fontName] then
 			print("Error! Multiple fonts with same name!")
 		else
 			print("Loaded font '" .. fontName .. "' at '" .. fileName .. "'")
 			fonts[fontName] = directory .. "/" .. fileName
 		end
-		
+
 	end
 
 end
@@ -44,20 +44,20 @@ graphics.colours = {
 
 -- Load all fonts
 function graphics.load()
-	
+
 	-- Load the Adore fonts
 	loadFonts( "adore/fonts" )
-	
+
 	-- Load the game fonts
 	loadFonts( "game/fonts" )
-	
+
 end
 
-function graphics.getNativeWidth() 
+function graphics.getNativeWidth()
 	return love.graphics.getWidth()
 end
 
-function graphics.getNativeHeight() 
+function graphics.getNativeHeight()
 	return love.graphics.getHeight()
 end
 
@@ -97,7 +97,7 @@ function graphics.print(string, font, colour, x, y)
 end
 
 function graphics.printf(string, font, colour, x, y, limit, align, r, sx, sy, ox, oy, kx, ky)
-	
+
 	love.graphics.setColor(colour.r or colour[1], colour.g or colour[2], colour.b or colour[3], colour.a or colour[4])
 	love.graphics.setFont(font)
 	love.graphics.printf(string, x, y, limit, align, r, sx, sy, ox, oy, kx, ky )
@@ -107,7 +107,7 @@ end
 function graphics.rectangle(x, y, width, height, filled, colour)
 
 	local mode
-	
+
 	if filled then
 		mode = "fill"
 	else
@@ -140,5 +140,4 @@ function graphics.newImage(...)
 	return love.graphics.newImage(...)
 end
 
-adore.graphics = graphics
-		
+return graphics

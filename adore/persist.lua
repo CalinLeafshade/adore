@@ -1,10 +1,10 @@
 local persistable = {
-	
+
 	-- INTERNAL USE - persist a given set of keys. The keys should be
 	-- an array of strings and tables.  Strings are stored as keys, tables are
 	-- accessed such that: Index 1 is the key. Index 2 is a "builder" function.
 	_adore_persistKeys = function (self, keys)
-		
+
 		-- Register some internal use functions.
 		self._adore_persisted = {}
 		self._adore_persisted_getters = {}
@@ -16,10 +16,10 @@ local persistable = {
 			if type(v) == "table" then
 				-- Index 1 is the key.
 				table.insert(self._adore_persisted, v[1])
-				
+
 				-- Index 2 is the getter.
 				self._adore_persisted_getters[v[1]] = v[2]
-				
+
 				-- Index 3 is the setter.
 				self._adore_persisted_setters[v[1]] = v[3]
 			else
@@ -28,7 +28,7 @@ local persistable = {
 		end
 
 	end,
-	
+
 	-- INTERNAL USE. Return the values which need to be persisted
 	_adore_getPersistableTable = function (self)
 		local persistedTable = {}
@@ -39,7 +39,7 @@ local persistable = {
 				persistedTable[v] = self[v]
 			end
 		end
-		
+
 		return persistedTable
 	end,
 
@@ -54,14 +54,14 @@ local persistable = {
 			end
 		end
 	end,
-	
+
 	-- Default implementation.
 	prepareForReload = function(self)
-		
+
 		-- do nothing.
-	
+
 	end
-	
+
 
 }
 
@@ -71,34 +71,34 @@ local persist = {}
 persist.mixin = { persistable = persistable }
 
 function persist.register(key, item)
-	
+
 	persistedObjects[key] = item
-	
+
 	item:_adore_persistKeys( item:getPersistenceKeys() )
 
 end
 
 function persist.save()
-	
+
 	local saveData = {}
-	
+
 	for k,v in pairs(persistedObjects) do
 		saveData[k] = v:_adore_getPersistableTable()
 	end
-	
+
 	local game = adore.getGame()
-	
+
 	if game.state then
 		saveData["_adore_game_state"] = game.state
 	end
-	
+
 	local out = json.encode(saveData)
 
 	love.filesystem.write("jake.sav", out)
 end
 
 function persist.load()
-	
+
 	local inS = love.filesystem.read("jake.sav")
 
 	local saveData = json.decode(inS)
@@ -110,7 +110,7 @@ function persist.load()
 			persistedObjects[k]:_adore_setPersistedTable(v)
 		end
 	end
-	
+
 end
-	
-adore.persist = persist
+
+return persist

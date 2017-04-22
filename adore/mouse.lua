@@ -1,4 +1,4 @@
-local mouse = 
+local mouse =
 	{
 		x = 0, y = 0
 	}
@@ -11,4 +11,4 @@ function mouse.getY()
 	return mouse.y
 end
 
-adore.mouse = mouse
+return mouse
