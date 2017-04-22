@@ -153,5 +153,9 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+primary_domain = "js"
+highlight_language = "lua"
 
-
+import sphinx_rtd_theme
+html_theme = 'sphinx_rtd_theme'
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
