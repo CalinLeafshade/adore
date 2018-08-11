@@ -110,8 +110,11 @@ end
 
 function scene:draw()
 	love.graphics.setColor(255,255,255)
-	love.graphics.draw(self.images["background"],0,0)
+	if self.images["background"] ~= nil then
+		love.graphics.draw(self.images["background"],0,0)
+	end
 	self:onPostBackgroundDraw()
+	adore.runEvent("postBackgroundDraw", self)
 	if adore.debug.enabled then
 		love.graphics.setColor(200,100,150,128)
 		self.nodemap:draw()

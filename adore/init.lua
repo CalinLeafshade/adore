@@ -42,7 +42,7 @@ function adore.runEvent(name, ...)
 end
 
 function adore.initGFX()
-	love.window.setMode(game.config.resolution[1] * gfxScale, game.config.resolution[2] * gfxScale, {fullscreen = false, vsync = true})
+	love.window.setMode(game.config.resolution[1] * gfxScale, game.config.resolution[2] * gfxScale, {fullscreen = false, vsync = true, display = 2})
 	love.window.setTitle(game.config.title)
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	canvas = love.graphics.newCanvas(game.config.resolution[1],game.config.resolution[2], "normal", 4)
@@ -71,9 +71,11 @@ end
 function adore.draw()
 	if canvas then
 
+		love.graphics.setCanvas(canvas)
+		love.graphics.clear()
+		
 		-- Draw camera translated thingies
 		adore.camera.attach()
-		love.graphics.setCanvas(canvas)
 		adore.bloom.preDraw()
 		adore.scenes.draw()
 		adore.camera.detach()
