@@ -115,7 +115,7 @@ function scene:draw()
 	end
 	self:onPostBackgroundDraw()
 	adore.runEvent("postBackgroundDraw", self)
-	if adore.debug.enabled then
+	if adore.debug.enabled and self.nodemap then
 		love.graphics.setColor(200,100,150,128)
 		self.nodemap:draw()
 	end

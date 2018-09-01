@@ -37,9 +37,9 @@ end
 
 function mask:debugDraw()
 	if self.image then
-		love.graphics.setColor(255,255,255,100)
-		love.graphics.draw(self.image)
-		love.graphics.setColor(255,255,255)
+		love.graphics.setColor(1,1,1,0.5)
+		love.graphics.draw(self.image, 0, 0)
+		love.graphics.setColor(1,1,1,1)
 	end
 end
 

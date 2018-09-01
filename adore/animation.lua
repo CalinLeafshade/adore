@@ -19,7 +19,8 @@ function animation:initialize(name, file, normalFile, cols, rows,frameCount, spe
 end
 
 function animation:load()
-	self.texture = love.graphics.newImage("game/gfx/animations/" .. self.file)
+	self.imageData = love.image.newImageData("game/gfx/animations/" .. self.file)
+	self.texture = love.graphics.newImage(self.imageData)
 
 	if self.normalFile then
 		self.normal = love.graphics.newImage("game/gfx/animations/" .. self.normalFile)
@@ -89,7 +90,7 @@ function animation:hitTest(x, y)
 	if x < 0 or x >= self.texture:getWidth() or y < 0 or y >= self.texture:getHeight() then
 		return false
 	end
-	local r,g,b,a = self.texture:getData():getPixel(x,y)
+	local r,g,b,a = self.imageData:getPixel(x,y)
 	return a > 0.2
 end
 

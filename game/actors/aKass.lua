@@ -9,9 +9,11 @@ aKass.walkSet =
 	down = adore.animation("aKassDown", "aKass/front.png", nil, 9, 1, 9, 3, false)
 }
 
-aKass.position.y = 126
-aKass.position.x = 207
+aKass.position.y = 100
+aKass.position.x = 160
+
+aKass:face("down")
 
 Player = aKass
 
-aKass:setScene("dorm")
+aKass:setScene("descent")

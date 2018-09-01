@@ -45,7 +45,7 @@ function adore.initGFX()
 	love.window.setMode(game.config.resolution[1] * gfxScale, game.config.resolution[2] * gfxScale, {fullscreen = false, vsync = true, display = 2})
 	love.window.setTitle(game.config.title)
 	love.graphics.setDefaultFilter("nearest", "nearest")
-	canvas = love.graphics.newCanvas(game.config.resolution[1],game.config.resolution[2], "normal", 4)
+	canvas = love.graphics.newCanvas(game.config.resolution[1],game.config.resolution[2])
 end
 
 function adore.update(dt)
